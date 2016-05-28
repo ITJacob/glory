@@ -1,5 +1,5 @@
 {
-  "name": "mern-starter",
+  "name": "glory",
   "version": "1.0.0",
   "description": "Boilerplate project for building Isomorphic apps using React and Redux",
   "scripts": {
@@ -7,6 +7,7 @@
     "test:server": "node_modules/.bin/cross-env NODE_ENV=test PORT=8080 MONGO_URL=mongodb://localhost:27017/mern-test mocha --compilers js:babel-register --recursive server/tests/**/*.spec.js",
     "start": "node_modules/.bin/cross-env NODE_ENV=development node_modules/.bin/nodemon index.js",
     "start:prod": "node_modules/.bin/cross-env NODE_ENV=production node index.js",
+    "start:server": "NODE_ENV=production forever start -a -l /var/log/glory.log -o /var/log/glory/out.log -e /var/log/glory/err.log index.js",
     "bs": "npm run clean && npm run build && npm run start:prod",
     "minify": "cleancss -o static/css/app.min.css static/css/app.css",
     "build": "node_modules/.bin/cross-env NODE_ENV=production webpack --config webpack.config.prod.js && npm run minify",
@@ -73,6 +74,7 @@
     "expect": "^1.20.1",
     "expect-jsx": "^2.5.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "forever": "^0.15.2",
     "mocha": "^2.5.3",
     "nodemon": "^1.9.2",
     "pre-commit": "^1.1.3",
